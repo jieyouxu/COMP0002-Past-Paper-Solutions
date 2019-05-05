@@ -28,6 +28,24 @@ void swap(int a[], int m, int n)
     a[n] = temp;
 }
 
+// Q1d
+// Assume length of array >= 3
+void swapPairs(int a[], int length)
+{
+    for (int i = 0; i < length - 1; i++)
+    {
+        if (a[i] > a[i + 1])
+            swap(a, i, i + 1);
+    }
+}
+
+void printArray(int a[], int length)
+{
+    for (int i = 0; i < length; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
 int main(void)
 {
     printf("Q1(a): %d\n", 1 * 2 * 3 / 4 * 5 - 6);
@@ -35,9 +53,17 @@ int main(void)
     int a[] = {3, 5, 7, 9, 11};
     swap(a, 2, 3);
     printf("Q1(c): ");
-    for (int i = 0; i < 5; i++)
-        printf("%d ", a[i]);
-    printf("\n");
+    printArray(a, 5);
+
+    int b[] = {2, 1, 3, 4};
+    swapPairs(b, 4);
+    printf("Q1(d): ");
+    printArray(b, 4);
+
+    int c[] = {5, 7, 3, 4, 9, 3};
+    swapPairs(c, 6);
+    printf("Q1(d): ");
+    printArray(c, 6);
 
     return 0;
 }
