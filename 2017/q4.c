@@ -1,5 +1,6 @@
 /** COMP0002 2017 Q4 */
 
+#include <stdbool.h>
 #include <stdio.h>
 
 /**
@@ -77,10 +78,42 @@ void printAsBinary(int n)
  *      managed by program B.
  */
 
+// Q4(d)
+bool stringEquals(char* str1, char* str2)
+{
+    char* p1 = str1;
+    char* p2 = str2;
+
+    while (true)
+    {
+        if (*p1 == '\0' && *p2 != '\0')
+            return false;
+        else if (*p1 != '\0' && *p2 == '\0')
+            return false;
+        else if (*p1 == '\0' && *p2 == '\0')
+            return true;
+
+        p1++;
+        p2++;
+    }
+
+    return false;
+}
+
+void printStringEquals(char* str1, char* str2)
+{
+    char* equality = stringEquals(str1, str2) ? "true" : "false";
+    printf("Q4(d): \"%s\" == \"%s\": %s\n", str1, str2, equality);
+}
+
 int main(void)
 {
     printf("Q4(b)(ii): 5 in binary is ");
     printAsBinary(5);
+
+    printStringEquals("", "");
+    printStringEquals("abc", "ab");
+    printStringEquals("abcde", "abcde");
 
     return 0;
 }
