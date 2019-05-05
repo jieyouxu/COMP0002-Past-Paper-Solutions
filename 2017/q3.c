@@ -83,6 +83,45 @@ typedef struct node
 //           /                 \
 //          b                   b
 
+// Q3(d)
+//
+//  HIGH ADDRESS -------> +---------------------------+
+//                        |                           | COMMAND-LINE ARGUMENTS
+//                        |                           | ENVIRONMENT VARIABLES
+//                        |---------------------------|
+//                        |           STACK           |
+//                        |                           |
+//                        |- - - - - - - - - - - - - -|
+//                        |             |             |
+//                        |             |             |
+//                        |             V             |
+//                        |                           |
+//                        |                           |
+//                        |                           |
+//                        |                           |
+//                        |                           |
+//                        |                           |
+//                        |                           |
+//                        |                           |
+//                        |                           |
+//                        | - - - - - - - - - - - -  -|
+//                        |                           |
+//                        |           HEAP            |
+//                        |---------------------------|   ^
+//                        |                           |   | INITIALIZED TO ZERO
+//                        |     UNINITIALIZED DATA    |   | BY `EXEC`
+//                        |                           |   |
+//                        |---------------------------|   V
+//                        |                           |   ^
+//                        |      INITIALIZED DATA     |   |
+//                        |                           |   |
+//                        |---------------------------|   | READ FROM
+//                        |                           |   | PROGRAM FILE
+//                        |           TEXT            |   | BY `EXEC`
+//                        |                           |   |
+//   LOW ADDRESS -------> +---------------------------+   V
+//
+
 int main(void)
 {
     printf("Q3(b): length of \"test\" is %d\n", lengthOfString("test"));
