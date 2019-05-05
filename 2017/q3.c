@@ -52,6 +52,37 @@ char* copyString(char* str)
     return copy;
 }
 
+// Q3(c)
+// Binary Tree
+// Can be modelled by a `node` struct which has a key value, and two `node*`
+// pointers to its left and right child.
+typedef struct node
+{
+    int value;
+    node* left;
+    node* right;
+} node;
+
+// Inserting a value:
+// CASE root:
+//      Create a new `node` and assign key to its `value`.
+// CASE leaf:
+//      Create a new `node`, point the `leftChild` or `rightChild` pointer of an
+//      existing `node` to the new `node`.
+// CASE node:
+//      Given
+//              a
+//             / \
+//            b   c
+//      Can insert new node `n` by redirecting `leftChild` or `rightChild` of
+//      `a` parent node to `n`, and point `leftChild` or `rightChild` of `n` to
+//      the original `leftChild` or `rightChild` of `a`.
+//              a           a
+//             / \         / \
+//            n   c       b   n
+//           /                 \
+//          b                   b
+
 int main(void)
 {
     printf("Q3(b): length of \"test\" is %d\n", lengthOfString("test"));
