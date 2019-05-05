@@ -40,3 +40,32 @@ square n = n ^ 2
 quarProd :: [Int] -> Int
 quarProd [] = 0
 quarProd xs = foldr1 (*) [iter' 2 square x | x <- xs]
+-- Q5(d)
+{-
+    Given:
+    power2 n
+        | n == 0 = 1
+        | otherwise = 2 * power2(n - 1)
+
+    Given:
+        precondition:   n >= 0
+        postcondition:  power2 n = 2^n
+        and always terminates
+
+    By induction on `n`, given `n` in natural numbers, `n` >= 0
+    Base case: P(0)
+        power2 0 = 1 = 2^0, which trivially holds
+    Induction hypothesis: P(k)
+        power2 k = 2^k
+    Step Case: P(k + 1)
+        power2 (k + 1) = 2 * power2 k
+                 = 2 * 2^(k)            (By I.H.)
+                 = 2^(k+1)                      (Exponent law)
+                 As required
+
+    Since:
+    P(0)             P(k) -> P(k + 1)
+    ---------------------------------
+             ∀ n ∈ ℕ: P(n)
+
+-}
