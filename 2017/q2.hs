@@ -27,3 +27,12 @@ fac n = n * fac (n - 1)
 sumFac :: Int -> Int
 sumFac 0 = 1
 sumFac n = fac n + sumFac (n - 1)
+
+-- Q2(c)
+cubes :: [Int]
+cubes = [x | x <- [1 .. 10], 200 <= x ^ 3 && x ^ 3 <= 1000]
+
+cubes2 :: [Int]
+cubes2 = filter (>= 200) $ takeWhile (<= 1000) cubed
+  where
+    cubed = [x ^ 3 | x <- [1 ..]]
