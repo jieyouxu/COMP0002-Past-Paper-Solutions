@@ -26,3 +26,8 @@ main :: IO ()
 main = do
   quickCheck prop_emptyList
   quickCheck prop_concatList
+
+-- Q6(c)
+sumAcc :: [Int] -> Int -> Int
+sumAcc [] acc     = acc
+sumAcc (x:xs) acc = sumAcc xs (acc + x)
