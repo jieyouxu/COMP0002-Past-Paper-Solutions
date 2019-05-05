@@ -18,5 +18,13 @@
         A property-testing library
 -}
 -- Q5(b)
+isPrimeHelper :: Int -> Int -> Bool
+isPrimeHelper n 2 = n `mod` 2 /= 0
+isPrimeHelper n d
+  | n `mod` d == 0 = False
+  | otherwise = isPrimeHelper n (d - 1)
+
 isPrime :: Int -> Bool
-isPrime n = null [x | x <- [2 .. n - 1], n `mod` x == 0]
+isPrime 1 = True
+isPrime 2 = True
+isPrime n = isPrimeHelper n (n - 1)
