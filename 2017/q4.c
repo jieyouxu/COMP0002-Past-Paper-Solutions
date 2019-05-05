@@ -66,6 +66,17 @@ void printAsBinary(int n)
     return printAsBinary(halved);
 }
 
+/**
+ * Q4(c)
+ *
+ * virtual memory:
+ *      Important for multiple C programs running on the same computer at the
+ *      same time to prevent programs from interferring with each other, e.g. so
+ *      illegal access from program A won't corrupt memory managed by program B.
+ *      This is also for security reasons so program A cannot access memory *
+ *      managed by program B.
+ */
+
 int main(void)
 {
     printf("Q4(b)(ii): 5 in binary is ");
