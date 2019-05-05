@@ -36,3 +36,16 @@ cubes2 :: [Int]
 cubes2 = filter (>= 200) $ takeWhile (<= 1000) cubed
   where
     cubed = [x ^ 3 | x <- [1 ..]]
+
+-- Q2(d)
+square :: Int -> Int
+square n = n ^ 2
+
+isNegative :: Int -> Bool
+isNegative n = n < 0
+
+negSum :: [Int] -> (Int -> Int) -> Int
+negSum [] _ = 0
+negSum xs operation = sum (map operation negativeNumbers)
+  where
+    negativeNumbers = filter isNegative xs
