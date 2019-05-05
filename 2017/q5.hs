@@ -28,3 +28,15 @@ isPrime :: Int -> Bool
 isPrime 1 = True
 isPrime 2 = True
 isPrime n = isPrimeHelper n (n - 1)
+
+-- Q5(c)
+iter' :: Int -> (a -> a) -> a -> a
+iter' 0 f x = x
+iter' n f x = iter' (n - 1) f (f x)
+
+square :: Int -> Int
+square n = n ^ 2
+
+quarProd :: [Int] -> Int
+quarProd [] = 0
+quarProd xs = foldr1 (*) [iter' 2 square x | x <- xs]
