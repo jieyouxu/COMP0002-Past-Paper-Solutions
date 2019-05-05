@@ -19,9 +19,25 @@
 // memory access from corrupting memory of other user-space applications as well
 // as the kernel or OS.
 
+// Q1c
+// Given m, n are valid indices
+void swap(int a[], int m, int n)
+{
+    int temp = a[m];
+    a[m] = a[n];
+    a[n] = temp;
+}
+
 int main(void)
 {
-    printf("Q1a: %d\n", 1 * 2 * 3 / 4 * 5 - 6);
+    printf("Q1(a): %d\n", 1 * 2 * 3 / 4 * 5 - 6);
+
+    int a[] = {3, 5, 7, 9, 11};
+    swap(a, 2, 3);
+    printf("Q1(c): ");
+    for (int i = 0; i < 5; i++)
+        printf("%d ", a[i]);
+    printf("\n");
 
     return 0;
 }
