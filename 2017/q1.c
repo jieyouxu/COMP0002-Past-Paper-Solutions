@@ -39,6 +39,17 @@ void swapPairs(int a[], int length)
     }
 }
 
+// Q1e
+void bubbleSort(int a[], int length)
+{
+    int i = 0;
+    while (i < length)
+    {
+        swapPairs(a, length);
+        i++;
+    }
+}
+
 void printArray(int a[], int length)
 {
     for (int i = 0; i < length; i++)
@@ -64,6 +75,11 @@ int main(void)
     swapPairs(c, 6);
     printf("Q1(d): ");
     printArray(c, 6);
+
+    int d[] = {1, 7, 3, 9, -1, 5, 8};
+    bubbleSort(d, 7);
+    printf("Q1(e): ");
+    printArray(d, 7);
 
     return 0;
 }
