@@ -27,3 +27,9 @@ coalesce :: Eq a => [(a, Float)] -> [(a, Float)]
 coalesce [] = []
 coalesce pairs = foldr mergeEqualFirst [] pairs
 
+-- Q6(c)
+secondSum :: [(a, Float)] -> Float
+secondSum pairs = foldr (\(a, w) acc -> acc + w) 0 pairs
+
+dist :: [(a, Float)] -> Bool
+dist pairs = secondSum [ (a, w) | (a, w) <- pairs ] == 1
