@@ -1,5 +1,7 @@
 /** COMP0002 Q4 */
 
+#include <stdio.h>
+
 /**
  * Q4(a)
  * virtual memory:
@@ -13,3 +15,30 @@
  * variable declaration:
  *      Designating a new symbol able to hold values of a specific type.
  */
+
+/**
+ * Q4(b)
+ *
+ * Given
+ *  1.  int f(int n)
+ *  2.      if (n < 1) { return 0; }
+ *  3.      else
+ *  4.          n(n-1) + f(n-1);
+ *  5.      return 0;
+ *  6.  }
+ *
+ * Q4(b)(i)
+ *
+ * 1. Missing left brace, should be
+ *      int f(int n) {
+ * 4. Missing `*`, should be
+ *      n * (n - 1) + f(n - 1)
+ *
+ * Q4(b)(ii)
+ *
+ * 2. Base case should be 1
+ *      2^0 = 1
+ * 4. Step case should be
+ *      f(n - 1) + f(n - 1), or more efficiently 2 * f(n - 1)
+ */
+
