@@ -19,3 +19,15 @@
         5.  > - read "3"
             = -3
 -}
+
+-- Q2(b)
+take' :: Int -> [a] -> [a]
+take' 0 xs = []
+take' n []
+    | n > 0 = error "cannot take items from empty list"
+    | n == 0 = []
+    | otherwise = error "invalid number"
+take' n (src @ (x : xs))
+    | n < 0 = error "invalid number"
+    | n > length src = error "cannot take more than length of list"
+    | otherwise = x : (take' (n - 1) xs)
