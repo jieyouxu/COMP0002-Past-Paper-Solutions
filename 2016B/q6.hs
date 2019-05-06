@@ -32,6 +32,7 @@ sum' :: Num a => [a] -> a
 sum' xs = foldr (+) 0 xs
 
 dist :: [(a, Float)] -> Bool
-dist pairs = sum weights == 1
+dist pairs = sum validWeights == 1
     where
-        weights = [ snd (a, w) | (a, w) <- pairs, w <= 1 ]
+        weights = map snd pairs
+        validWeights = filter (<= 1) weights
