@@ -31,3 +31,10 @@ take' n (src @ (x : xs))
     | n < 0 = error "invalid number"
     | n > length src = error "cannot take more than length of list"
     | otherwise = x : (take' (n - 1) xs)
+
+-- Q2(c)
+divisor :: Int -> [Int]
+divisor n
+    | n <= 0 = error "number needs to be positive"
+    | n == 1 = [1]
+    | otherwise = [ x | x <- [1..n], n `mod` x == 0 ]
