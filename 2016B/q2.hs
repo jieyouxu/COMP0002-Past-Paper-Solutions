@@ -64,3 +64,12 @@ reverse' (x:xs) = (reverse' xs) ++ [x]
 allReverse :: [[a]] -> [[a]]
 allReverse [[]] = [[]]
 allReverse xss = reverse' (map reverse' xss)
+
+-- Q2(e)
+-- foldl: sum 0 [a, b, c, d, e]
+-- foldl sum (sum 0 a) [b, c, d, e]
+
+foldl'' :: (b -> a -> b) -> b -> [a] -> b
+foldl'' f defaultValue [] = defaultValue
+-- foldl'' f defaultValue [x] = f defaultValue x
+foldl'' f defaultValue (x:xs) = foldl'' f (f defaultValue x) xs
