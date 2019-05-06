@@ -50,3 +50,7 @@ cuber xs = foldr (*) 1 cubed
     where
         positives = filter (>= 0) xs
         cubed = map (^ 3) positives
+
+-- Q2(e)
+mono :: (Int -> Int) -> Int -> Bool
+mono f upperBound = foldr (&&) True [ f x < f (x + 1) | x <- [0..upperBound] ]
