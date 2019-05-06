@@ -41,11 +41,31 @@ int getLengthOfString(char* str)
     return len;
 }
 
+// Q1(b)(iii)
+char* copyString(char* str)
+{
+    if (str == NULL)
+        return NULL;
+
+    int len = getLengthOfString(str);
+    char* copy = (char*) malloc(len * sizeof(char*));
+
+    for (int i = 0; i < len; i++)
+        *(copy + i) = *(str + i);
+
+    return copy;
+}
+
 int main(void)
 {
     printf("Q1(a): %f\n", 9 / 3 / 2 * 6 + 2 * 1.5);
 
     printf("Q1(b)(ii): length of \"test\" is %d \n", getLengthOfString("test"));
+
+    char* s1 = "1234";
+    char* s2 = copyString(s1);
+    printf("Q1(b)(iii): copy of \"%s\" is \"%s\"\n", s1, s2);
+    free(s2);
 
     return 0;
 }
