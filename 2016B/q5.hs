@@ -4,6 +4,8 @@
     Given `map`, `foldr`, `filter`
 -}
 
+import Data.Char
+
 {-
     Q5(a)
 
@@ -21,3 +23,12 @@
     higher-order function:
         A function which takes another function as an parameter
 -}
+
+-- Q5(b)
+raised :: IO ()
+raised = do
+    putStrLn "Enter a line of text:"
+    line <- getLine
+    putStrLn $ capitalized line
+        where
+            capitalized xs = map toUpper xs
