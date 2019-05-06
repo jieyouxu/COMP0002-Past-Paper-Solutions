@@ -90,7 +90,9 @@ int main(void)
 {
     char* s1 = "This is a sentence";
     char* s2 = "sent";
+    char* s3 = "as";
     printf("Q3(c): find(\"%s\", \"%s\") returns %d\n", s1, s2, find(s1, s2));
+    printf("Q3(c): find(\"%s\", \"%s\") returns %d\n", s1, s3, find(s1, s3));
 
     return 0;
 }
