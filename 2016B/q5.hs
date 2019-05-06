@@ -32,3 +32,10 @@ raised = do
     putStrLn $ capitalized line
         where
             capitalized xs = map toUpper xs
+
+-- Q5(c)
+zipWith'' :: (a -> a -> a) -> [a] -> [a] -> [a]
+zipWith'' f [] [] = []
+zipWith'' f [x] [] = []
+zipWith'' f [] [y] = []
+zipWith'' f (x:xs) (y:ys) = (f x y) : zipWith'' f xs ys
