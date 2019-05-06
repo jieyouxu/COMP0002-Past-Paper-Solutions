@@ -55,3 +55,12 @@
 -- Q2(c)
 intersect :: Int -> Int
 intersect n = (n * (n - 1)) `div` 2
+
+-- Q2(d)
+reverse' :: [a] -> [a]
+reverse' [] = []
+reverse' (x:xs) = (reverse' xs) ++ [x]
+
+allReverse :: [[a]] -> [[a]]
+allReverse [[]] = [[]]
+allReverse xss = reverse' (map reverse' xss)
