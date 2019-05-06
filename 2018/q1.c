@@ -67,7 +67,7 @@ int* copyArray(int* src, int length)
     int* copy = malloc(length * sizeof(int));
 
     for (int i = 0; i < length; i++)
-        *(copy + i) = *(src + i);
+        copy[i] = src[i];
 
     return copy;
 }
