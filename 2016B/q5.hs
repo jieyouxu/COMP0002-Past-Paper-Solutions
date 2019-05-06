@@ -39,3 +39,9 @@ zipWith'' f [] [] = []
 zipWith'' f [x] [] = []
 zipWith'' f [] [y] = []
 zipWith'' f (x:xs) (y:ys) = (f x y) : zipWith'' f xs ys
+
+-- Q5(d)
+zipWith''' :: (a -> a -> a) -> [a] -> [a] -> [a]
+zipWith''' f xs ys = map (uncurry $ f) pairs
+    where 
+        pairs = zip xs ys
