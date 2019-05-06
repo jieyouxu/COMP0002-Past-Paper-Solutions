@@ -45,3 +45,22 @@ zipWith''' :: (a -> a -> a) -> [a] -> [a] -> [a]
 zipWith''' f xs ys = map (uncurry $ f) pairs
     where 
         pairs = zip xs ys
+
+-- Q5(e)(i)
+-- Note `t` where is not constained to be strictly `Int`, instead, only 
+-- operations defined on it are constrained.
+data Vector t = Vector [t] deriving (Show)
+
+ok :: Vector Int -> Vector Int -> Bool
+ok (Vector xs) (Vector ys)
+    | null xs || null ys = False
+    | length xs == length ys = True
+    | otherwise = False
+
+sum' :: [Int] -> Int
+sum' xs = foldr (+) 0 xs
+
+dotProduct :: Vector Int -> Vector Int -> Int
+dotProduct (Vector xs) (Vector ys)
+    | ok (Vector xs) (Vector ys) = sum' (zipWith'' (*) xs ys)
+    | otherwise = error "invalid vectors"
