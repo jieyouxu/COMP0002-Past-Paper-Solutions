@@ -56,6 +56,24 @@ char* copyString(char* str)
     return copy;
 }
 
+// Q1(b)(iv)
+int countRecursive(char* str, char c, int n)
+{
+    if (*str == '\0')
+        return n;
+    if (*str == c)
+        return countRecursive(str + 1, c, n + 1);
+    return countRecursive(str + 1, c, n);
+}
+
+int count(char* str, char c)
+{
+    if (str == NULL)
+        return 0;
+
+    return countRecursive(str, c, 0);
+}
+
 int main(void)
 {
     printf("Q1(a): %f\n", 9 / 3 / 2 * 6 + 2 * 1.5);
@@ -66,6 +84,10 @@ int main(void)
     char* s2 = copyString(s1);
     printf("Q1(b)(iii): copy of \"%s\" is \"%s\"\n", s1, s2);
     free(s2);
+
+    printf(
+        "Q1b(iv): char \'a\' appears in \"category\" %d time(s)\n",
+        count("category", 'a'));
 
     return 0;
 }
