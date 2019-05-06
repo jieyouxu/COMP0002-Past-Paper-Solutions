@@ -31,25 +31,25 @@ coalesce pairs = foldr mergeEqualFirst [] pairs
 sum' :: [Float] -> Float
 sum' xs = foldr (+) 0.0 xs
 
-getWeights :: [(a, Float)] -> [Float]
+getWeights :: Eq a => [(a, Float)] -> [Float]
 getWeights pairs = map snd pairs
 
 getValidWeights :: [Float] -> [Float]
 getValidWeights weights = filter (<= 1) weights
 
-dist :: [(a, Float)] -> Bool
+dist :: Eq a => [(a, Float)] -> Bool
 dist pairs = sum' validWeights == 1
     where
         validWeights = (getValidWeights . getWeights) pairs
 
 -- Q6(d)
-allZeros :: [(a, Float)] -> Bool
+allZeros :: Eq a => [(a, Float)] -> Bool
 allZeros pairs = foldr (\(a, w) areZeros -> (w == 0) && areZeros) True pairs
 
-scaleWeight :: (a, Float) -> Float -> (a, Float)
+scaleWeight :: Eq a => (a, Float) -> Float -> (a, Float)
 scaleWeight (a, w) total = (a, w / total)
 
-normalise :: [(a, Float)] -> [(a, Float)]
+normalise :: Eq a => [(a, Float)] -> [(a, Float)]
 normalise [] = []
 normalise pairs
     | dist pairs = pairs
@@ -57,3 +57,7 @@ normalise pairs
     | otherwise = map (\(a, w) -> scaleWeight (a, w) total) pairs
     where 
         total = (sum' . getValidWeights . getWeights) pairs
+
+-- Q6(e)
+distribution :: Eq a => [(a, Float)] -> [(a, Float)]
+distribution pairs = (normalise . coalesce) pairs
