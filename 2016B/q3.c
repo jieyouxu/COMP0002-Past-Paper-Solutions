@@ -19,3 +19,10 @@
  * function definition:
  *      Implementing the actual body of a function.
  */
+
+/**
+ * Q3(b)
+ *  (i)     double a = 12;  YES
+ *  (ii)    long n = 2.3;   FAIL: implicit conversion
+ *  (iii)   int k = &12;    FAIL: address-of operator on constant
+ */
