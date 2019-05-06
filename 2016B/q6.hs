@@ -28,11 +28,32 @@ coalesce [] = []
 coalesce pairs = foldr mergeEqualFirst [] pairs
 
 -- Q6(c)
-sum' :: Num a => [a] -> a
-sum' xs = foldr (+) 0 xs
+sum' :: [Float] -> Float
+sum' xs = foldr (+) 0.0 xs
+
+getWeights :: [(a, Float)] -> [Float]
+getWeights pairs = map snd pairs
+
+getValidWeights :: [Float] -> [Float]
+getValidWeights weights = filter (<= 1) weights
 
 dist :: [(a, Float)] -> Bool
 dist pairs = sum' validWeights == 1
     where
-        weights = map snd pairs
-        validWeights = filter (<= 1) weights
+        validWeights = (getValidWeights . getWeights) pairs
+
+-- Q6(d)
+allZeros :: [(a, Float)] -> Bool
+allZeros pairs = foldr (\(a, w) areZeros -> (w == 0) && areZeros) True pairs
+
+scaleWeight :: (a, Float) -> Float -> (a, Float)
+scaleWeight (a, w) total = (a, w / total)
+
+normalise :: [(a, Float)] -> [(a, Float)]
+normalise [] = []
+normalise pairs
+    | dist pairs = pairs
+    | allZeros pairs = error "all weights are zero"
+    | otherwise = map (\(a, w) -> scaleWeight (a, w) total) pairs
+    where 
+        total = (sum' . getValidWeights . getWeights) pairs
