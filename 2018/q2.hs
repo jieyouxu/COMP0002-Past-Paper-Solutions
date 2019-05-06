@@ -38,3 +38,8 @@ divisor n
     | n <= 0 = error "number needs to be positive"
     | n == 1 = [1]
     | otherwise = [ x | x <- [1..n], n `mod` x == 0 ]
+
+isPrime :: Int -> Bool
+isPrime n
+    | n <= 1 = False
+    | otherwise = length (divisor n) == 2
