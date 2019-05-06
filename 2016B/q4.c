@@ -81,3 +81,28 @@
 //   LOW ADDRESS -------> +---------------------------+   V
 //
 
+// Q3(d)
+void filledTriangle(int rows)
+{
+    if (rows < 1)
+        return;
+
+    for (int i = 1; i <= rows; i++)
+    {
+        for (int j = 1; j <= i; j++)
+            printf("%c", '*');
+
+        printf("\n");
+    }
+}
+
+int main(void)
+{
+    printf("Q4(d):\n");
+    printf("filledTriangle(4):\n");
+    filledTriangle(4);
+    printf("filledTriangle(6):\n");
+    filledTriangle(6);
+
+    return 0;
+}
