@@ -46,17 +46,18 @@ dist pairs = sum' validWeights == 1
 allZeros :: Eq a => [(a, Float)] -> Bool
 allZeros pairs = foldr (\(a, w) areZeros -> (w == 0) && areZeros) True pairs
 
-scaleWeight :: Eq a => (a, Float) -> Float -> (a, Float)
-scaleWeight (a, w) total = (a, w / total)
+scaleWeight :: Eq a => Float -> (a, Float) -> (a, Float)
+scaleWeight total (a, w) = (a, w / total)
 
 normalise :: Eq a => [(a, Float)] -> [(a, Float)]
 normalise [] = []
 normalise pairs
     | dist pairs = pairs
     | allZeros pairs = error "all weights are zero"
-    | otherwise = map (\(a, w) -> scaleWeight (a, w) total) pairs
+    | otherwise = map scaler pairs
     where 
         total = (sum' . getValidWeights . getWeights) pairs
+        scaler = scaleWeight total
 
 -- Q6(e)
 distribution :: Eq a => [(a, Float)] -> [(a, Float)]
