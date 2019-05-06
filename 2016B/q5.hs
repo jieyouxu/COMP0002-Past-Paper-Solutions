@@ -46,7 +46,7 @@ zipWith''' f xs ys = map (uncurry $ f) pairs
     where 
         pairs = zip xs ys
 
--- Q5(e)(i)
+-- Q5(e)
 -- Note `t` where is not constained to be strictly `Int`, instead, only 
 -- operations defined on it are constrained.
 data Vector t = Vector [t] deriving (Show)
