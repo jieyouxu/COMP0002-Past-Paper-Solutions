@@ -71,5 +71,4 @@ allReverse xss = reverse' (map reverse' xss)
 
 foldl'' :: (b -> a -> b) -> b -> [a] -> b
 foldl'' f defaultValue [] = defaultValue
--- foldl'' f defaultValue [x] = f defaultValue x
 foldl'' f defaultValue (x:xs) = foldl'' f (f defaultValue x) xs
