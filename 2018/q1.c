@@ -59,12 +59,9 @@ int sumNegativesPointer(int* numbers, int length)
 
 // Q1(d)
 // Given length >= 0
-int* copyArray(int* src, int length)
+int** copyArray(int** src, int length)
 {
-    if (length <= 0)
-        return NULL;
-
-    int* copy = malloc(length * sizeof(int));
+    int** copy = malloc(length * sizeof(int*));
 
     for (int i = 0; i < length; i++)
         copy[i] = src[i];
@@ -81,9 +78,10 @@ int main(void)
     printf("Q1(c)(iii) Sum of {-1, -4, 0, 6, -2} is %d\n", aSumPtr);
 
     int b[] = {1, 2, 3, 4, 5};
+    int* bPtrs[] = {&b[0], &b[1], &b[2], &b[3], &b[4]};
     printf("Q1(d) copy of {1, 2, 3, 4, 5} is: ");
     for (int i = 0; i < 5; i++)
-        printf("%d ", b[i]);
+        printf("%d ", *bPtrs[i]);
     printf("\n");
 
     return 0;
