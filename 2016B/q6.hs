@@ -35,7 +35,7 @@ getWeights :: Eq a => [(a, Float)] -> [Float]
 getWeights pairs = map snd pairs
 
 getValidWeights :: [Float] -> [Float]
-getValidWeights weights = filter (<= 1) weights
+getValidWeights weights = filter (\w -> 0 <= w && w <= 1) weights
 
 dist :: Eq a => [(a, Float)] -> Bool
 dist pairs = sum' validWeights == 1
