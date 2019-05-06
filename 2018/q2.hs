@@ -43,3 +43,10 @@ isPrime :: Int -> Bool
 isPrime n
     | n <= 1 = False
     | otherwise = length (divisor n) == 2
+
+-- Q2(d)
+cuber :: [Int] -> Int
+cuber xs = foldr (*) 1 cubed
+    where
+        positives = filter (>= 0) xs
+        cubed = map (^ 3) positives
