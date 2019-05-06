@@ -28,8 +28,10 @@ coalesce [] = []
 coalesce pairs = foldr mergeEqualFirst [] pairs
 
 -- Q6(c)
-secondSum :: [(a, Float)] -> Float
-secondSum pairs = foldr (\(a, w) acc -> acc + w) 0 pairs
+sum' :: Num a => [a] -> a
+sum' xs = foldr (+) 0 xs
 
 dist :: [(a, Float)] -> Bool
-dist pairs = secondSum [ (a, w) | (a, w) <- pairs ] == 1
+dist pairs = sum weights == 1
+    where
+        weights = [ snd (a, w) | (a, w) <- pairs, w <= 1 ]
