@@ -51,3 +51,7 @@
         Secondly, should be maximum' not maximum
         Thirdly, shpuld be maximum' xs, which is the tail of the input list
 -}
+
+-- Q2(c)
+intersect :: Int -> Int
+intersect n = (n * (n - 1)) `div` 2
